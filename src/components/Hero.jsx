@@ -71,13 +71,13 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1.4 }}
             className="flex gap-6 mt-8 text-blue-300"
           >
-            <a href="https://github.com/ragavan2104" target="_blank" rel="noreferrer">
+            <a href="https://github.com/keerthu-32" target="_blank" rel="noreferrer">
               <Github className="w-7 h-7 hover:text-white transition-colors" />
             </a>
-            <a href="https://www.linkedin.com/in/ragavan-s-76a102258/" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/keerthana-s-b7a050258/" target="_blank" rel="noreferrer">
               <Linkedin className="w-7 h-7 hover:text-white transition-colors" />
             </a>
-            <a href="mailto:ragavan2104@gmail.com">
+            <a href="mailto:keerthanajothi943@gmail.com">
               <Mail className="w-7 h-7 hover:text-white transition-colors" />
             </a>
           </motion.div>
