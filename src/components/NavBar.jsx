@@ -1,125 +1,110 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+
+const textReveal = {
+  hidden: { y: "120%", opacity: 0 },
+  visible: { y: "0%", opacity: 1, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const transition = { duration: 1.4, ease: [0.16, 1, 0.3, 1] };
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
-  // Menu items
-  const navItems = [
-    { name: "Home", link: "/", type: "route" },
-    { name: "Projects", link: "#projects", type: "scroll" },
-    { name: "Skills", link: "#skills", type: "scroll" },
-    // { name: "Digital Keepsakes", link: "/digitalkeepsakes", type: "route" },
-    { name: "Contact", link: "#contact", type: "scroll" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // Smooth scroll function
-  const handleScroll = (e, targetId) => {
-    e.preventDefault();
-    const element = document.querySelector(targetId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+  const navItems = ["Home", "Work", "Expertise", "Resume", "Contact"];
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id.toLowerCase());
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
-    setIsOpen(false); // Close mobile menu
-  };
-
-  // Handle navigation
-  const handleNavigation = (item) => {
-    if (item.type === 'scroll' && location.pathname === '/') {
-      // If we're on home page and it's a scroll item, scroll to section
-      const element = document.querySelector(item.link);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false);
   };
 
   return (
-    <nav className="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-black/30 border-b border-blue-400/30 shadow-xl">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-extrabold text-blue-400 tracking-wide hover:text-blue-300 transition-colors">
-          KEERTHU<span className="text-white">Dev</span>
-        </Link>
+    <>
+      <nav className={`fixed w-full top-0 z-[100] transition-all duration-700 ${scrolled ? 'py-4 bg-[#030303]/80 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'}`}>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+          
+          {/* Logo */}
+          <div className="overflow-hidden cursor-pointer" onClick={() => scrollTo('home')}>
+            <motion.span 
+              initial="hidden" animate="visible" variants={textReveal}
+              className="text-xl font-outfit font-black tracking-widest text-white uppercase block"
+            >
+              Keerthu<span className="text-gray-500">.</span>
+            </motion.span>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          {navItems.map((item, index) => (
-            item.type === 'route' ? (
-              <Link
-                key={index}
-                to={item.link}
-                onClick={() => handleNavigation(item)}
-                className="relative text-white hover:text-blue-400 transition duration-300 group cursor-pointer"
-              >
-                {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={item.link}
-                onClick={(e) => {
-                  handleScroll(e, item.link);
-                  handleNavigation(item);
-                }}
-                className="relative text-white hover:text-blue-400 transition duration-300 group cursor-pointer"
-              >
-                {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            )
-          ))}
+          {/* Desktop Nav Items */}
+          <div className="hidden md:flex items-center gap-12">
+            {navItems.map((item, i) => (
+              <div key={i} className="overflow-hidden">
+                <motion.button
+                  initial="hidden" 
+                  animate="visible" 
+                  variants={textReveal} 
+                  transition={{ ...transition, delay: i * 0.1 }}
+                  onClick={() => scrollTo(item)}
+                  className="text-xs font-outfit font-extrabold uppercase tracking-[0.2em] text-gray-400 hover:text-white transition-colors relative group cursor-pointer"
+                >
+                  {item}
+                  <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-white scale-x-0 origin-right group-hover:origin-left group-hover:scale-x-100 transition-transform duration-500" />
+                </motion.button>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Menu Icon */}
+          <button className="md:hidden text-white hover:opacity-75 transition-opacity cursor-pointer" onClick={() => setIsOpen(true)}>
+            <Menu size={24} strokeWidth={1.5} />
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden backdrop-blur-md bg-black/90 px-6 py-4 space-y-4 border-t border-blue-400/30">
-          {navItems.map((item, index) => (
-            item.type === 'route' ? (
-              <Link
-                key={index}
-                to={item.link}
-                onClick={() => handleNavigation(item)}
-                className="block text-white hover:text-blue-400 transition duration-300 cursor-pointer"
-              >
-                {item.name}
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={item.link}
-                onClick={(e) => {
-                  handleScroll(e, item.link);
-                  handleNavigation(item);
-                }}
-                className="block text-white hover:text-blue-400 transition duration-300 cursor-pointer"
-              >
-                {item.name}
-              </a>
-            )
-          ))}
-        </div>
-      )}
-    </nav>
+      {/* Full-screen Minimalist Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 bg-[#030303] z-[200] flex flex-col justify-center px-12"
+          >
+            <button className="absolute top-8 right-6 text-white hover:opacity-75 transition-opacity cursor-pointer" onClick={() => setIsOpen(false)}>
+              <X size={32} strokeWidth={1} />
+            </button>
+            
+            <div className="flex flex-col gap-8">
+              {navItems.map((item, i) => (
+                <div key={i} className="overflow-hidden">
+                  <motion.button
+                    initial={{ y: "100%" }} 
+                    animate={{ y: 0 }} 
+                    exit={{ y: "100%" }} 
+                    transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    onClick={() => scrollTo(item)}
+                    className="text-5xl font-outfit font-light tracking-tighter text-white uppercase text-left cursor-pointer"
+                  >
+                    {item}
+                  </motion.button>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

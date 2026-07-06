@@ -1,143 +1,115 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { ArrowUpRight, Github } from "lucide-react";
 
 import expense from "../assets/expense.png";
 import notesapp from "../assets/notesapp.png";
 import flightbook from "../assets/flightbook.png";
 
+const transition = { duration: 1.4, ease: [0.16, 1, 0.3, 1] };
+
 const Projects = () => {
-  const ProItems = [
+  const projects = [
     {
-      name: "Notes App",
-      description:
-        "A modern notes management application where you can Create, organize, and manage your notes with tagging, filtering, and data persistence",
+      name: "Smart Notes",
+      role: "Full Stack / MERN",
+      description: "Cloud-sync note architecture with real-time tagging and markdown support. Built specifically for developer workflows.",
+      link: "https://notesapp-w7lo.onrender.com/",
       github: "https://github.com/keerthu-32/notesapp",
-      live: "https://notesapp-w7lo.onrender.com/",
       image: notesapp,
+      year: "2024"
     },
     {
-      name: "Expense Tracker",
-      description:
-        "An Modern Expense Tracker application that allows you to track your expenses, set budgets, and visualize your spending habits.",
+      name: "Flux Expense",
+      role: "Frontend / Data Viz",
+      description: "Financial visualizer with intelligent categorization and monthly projection algorithms utilizing modern charting libraries.",
+      link: "https://expensetracker-1a0p.onrender.com/",
       github: "https://github.com/keerthu-32/expensetracker",
-      live: "https://expensetracker-1a0p.onrender.com/",
       image: expense,
+      year: "2023"
     },
     {
-      name: "Flight Booking App",
-      description:
-        "A Flight Booking application that allows users to search for flights, view flight details, and book flights with a user-friendly interface.",
+      name: "SkyBound",
+      role: "Backend / API Design",
+      description: "High-performance flight aggregation engine with secure checkout, complex querying, and ticket management systems.",
+      link: "https://booking-frontend-n6pv.onrender.com/",
       github: "https://github.com/keerthu-32/booking-frontend",
-      live: "https://booking-frontend-n6pv.onrender.com/",
       image: flightbook,
+      year: "2023"
     },
   ];
 
   return (
-    <section id="projects" className="flex flex-col items-center mt-28 px-6">
-      <motion.h2
-        className="text-4xl font-bold mb-8 text-blue-400"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        My Projects
-      </motion.h2>
+    <section id="work" className="py-32 px-6 md:px-12">
+      <div className="max-w-[1400px] mx-auto">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-10">
+          <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
+            Selected<br/>Work
+          </h2>
+          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed">
+            A curated selection of projects pushing the boundaries of web engineering, database design, and user experience.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {ProItems.map((item, index) => {
-          const cardRef = useRef(null);
-
-          const handleMouseMove = (e) => {
-            const card = cardRef.current;
-            if (!card) return;
-
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * 8;
-            const rotateY = ((x - centerX) / centerX) * -8;
-
-            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-          };
-
-          const handleMouseLeave = () => {
-            const card = cardRef.current;
-            if (!card) return;
-            card.style.transform =
-              "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
-          };
-
-          return (
-            <motion.div
+        {/* Row-by-Row List */}
+        <div className="flex flex-col">
+          {projects.map((project, index) => (
+            <motion.div 
               key={index}
-              ref={cardRef}
-              className="relative group rounded-2xl shadow-lg overflow-hidden w-72 md:w-80 cursor-pointer transition-transform duration-300"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={transition}
+              className="group relative border-b border-white/10 py-12 md:py-20 flex flex-col lg:flex-row items-center gap-10 md:gap-20 cursor-pointer"
             >
-              {/* Project Image */}
-              <div className="relative">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110"
-                />
-
-                {/* Glossy Light Reflection */}
-                <span
-                  className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent 
-                  translate-x-[-100%] group-hover:translate-x-[200%] 
-                  transition-transform duration-1000 ease-in-out"
-                />
-              </div>
-
-              {/* Project Name */}
-              <h3 className="absolute bottom-0 left-0 w-full text-center bg-gradient-to-t from-black/80 to-transparent text-lg font-semibold text-blue-400 py-2">
-                {item.name}
-              </h3>
-
-              {/* Overlay: description + links */}
-              <div
-                className="absolute inset-0 flex flex-col p-6 translate-y-full group-hover:translate-y-0 
-                transition-transform duration-500 ease-in-out 
-                bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
-              >
-                <h3 className="text-xl font-semibold text-blue-400 mb-3">
-                  {item.name}
+              {/* Project Info Left Column */}
+              <div className="w-full lg:w-1/3 flex flex-col z-10">
+                <span className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-wider">
+                  {project.year} — {project.role}
+                </span>
+                
+                <h3 className="text-4xl md:text-5xl font-outfit font-black text-white mb-6 tracking-tight group-hover:translate-x-4 transition-transform duration-500">
+                  {project.name}
                 </h3>
-                <p className="text-black mb-4 text-sm">{item.description}</p>
-
-                <div className="flex gap-4 mt-auto">
-                  <a
-                    href={item.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 text-center bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors text-sm"
+                
+                <p className="text-gray-400 font-inter font-light text-sm leading-relaxed mb-8 max-w-md">
+                  {project.description}
+                </p>
+                
+                <div className="flex items-center gap-6">
+                  <a 
+                    href={project.link} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-widest hover:opacity-50 transition-opacity text-white"
                   >
-                    GitHub Repo
+                    View Live Project <ArrowUpRight size={16} />
                   </a>
-                  <a
-                    href={item.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 text-center border border-blue-400 hover:bg-blue-500 hover:text-white text-blue-400 px-3 py-2 rounded-lg transition-colors text-sm"
+                  
+                  <a 
+                    href={project.github} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-widest hover:opacity-50 transition-opacity text-gray-500 hover:text-white"
                   >
-                    Live Demo
+                    GitHub Repo <Github size={16} />
                   </a>
                 </div>
               </div>
+
+              {/* Project Image Right Column - Reveal Animation */}
+              <div className="w-full lg:w-2/3 h-[320px] md:h-[500px] overflow-hidden rounded-[1.5rem] border border-white/10 relative">
+                {/* Reveal Slider overlay */}
+                <div className="absolute inset-0 bg-[#030303] z-10 group-hover:h-0 transition-all duration-700 ease-[0.16,1,0.3,1] origin-top" />
+                
+                <img 
+                  src={project.image} 
+                  alt={project.name}
+                  className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 ease-[0.16,1,0.3,1] grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100"
+                />
+              </div>
+
             </motion.div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
