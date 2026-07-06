@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Hero from './Hero';
+import About from './About';
 import Projects from './Projects';
 import Skills from './Skills';
 import Resume from './Resume';
@@ -34,6 +35,7 @@ const Home = () => {
         <NavBar />
         <main>
           <Hero />
+          <About />
           <Projects />
           <Skills />
           <Resume />

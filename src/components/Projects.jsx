@@ -19,7 +19,6 @@ const Projects = () => {
       githubBackend: "https://github.com/keerthu-32/notesapp-backend",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
       image: notesapp,
-      year: "2024"
     },
     {
       name: "Expense Tracker",
@@ -30,7 +29,6 @@ const Projects = () => {
       githubBackend: "https://github.com/keerthu-32/expensetracker-backend",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "ChartJS", "CSS"],
       image: expense,
-      year: "2023"
     },
     {
       name: "Flight Booking App",
@@ -41,7 +39,6 @@ const Projects = () => {
       githubBackend: "https://github.com/keerthu-32/booking-backend",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Redux", "APIs"],
       image: flightbook,
-      year: "2023"
     },
   ];
 
@@ -73,7 +70,7 @@ const Projects = () => {
               {/* Project Info Left Column */}
               <div className="w-full lg:w-1/3 flex flex-col z-10">
                 <span className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-wider">
-                  {project.year} — {project.role}
+                  {project.role}
                 </span>
                 
                 <h3 className="text-4xl md:text-5xl font-outfit font-black text-white mb-6 tracking-tight group-hover:translate-x-4 transition-transform duration-500">
