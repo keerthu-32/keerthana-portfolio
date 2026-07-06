@@ -22,8 +22,8 @@ const Projects = () => {
     },
     {
       name: "Expense Tracker",
-      role: "Frontend / Data Viz",
-      description: "Financial visualizer with intelligent categorization and monthly projection algorithms utilizing modern charting libraries.",
+      role: "Full Stack / MERN",
+      description: "Full-stack financial tracker with secure database synchronization, intelligent expense categorization, and interactive predictive charting.",
       link: "https://expensetracker-1a0p.onrender.com/",
       github: "https://github.com/keerthu-32/expensetracker",
       githubBackend: "https://github.com/keerthu-32/expensetracker-backend",
@@ -32,7 +32,7 @@ const Projects = () => {
     },
     {
       name: "Flight Booking App",
-      role: "Backend / API Design",
+      role: "Full Stack / Capstone",
       description: "High-performance flight aggregation engine with secure checkout, complex querying, and ticket management systems.",
       link: "https://booking-frontend-n6pv.onrender.com/",
       github: "https://github.com/keerthu-32/booking-frontend",
@@ -48,9 +48,14 @@ const Projects = () => {
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-10">
-          <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
-            Selected<br/>Work
-          </h2>
+          <div>
+            <span className="text-xs font-outfit font-black text-cyan-400 uppercase tracking-[0.3em] block mb-4">
+              02 / Projects
+            </span>
+            <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
+              Selected<br/>Work
+            </h2>
+          </div>
           <p className="text-gray-400 text-sm max-w-md mt-6 md:mt-0 font-inter font-light leading-relaxed">
             A showcase of full-stack engineering, database scalability, and immersive frontend architectures. Each product represents a deep-dive into solving real-world developer problems through modular code, optimized data structures, and refined user flows.
           </p>

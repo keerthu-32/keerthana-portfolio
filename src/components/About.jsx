@@ -25,6 +25,26 @@ const About = () => {
       <div className="absolute top-1/2 left-[-15%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto w-full">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-10">
+          <div className="overflow-hidden">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal}
+            >
+              <span className="text-xs font-outfit font-black text-cyan-400 uppercase tracking-[0.3em] block mb-4">
+                01 / Who I Am
+              </span>
+              <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
+                About Me<span className="text-gray-500">.</span>
+              </h2>
+            </motion.div>
+          </div>
+          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed text-left">
+            A deep-dive into my background, engineering philosophy, and academic journey.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Left Column: Profile Picture */}
@@ -46,34 +66,14 @@ const About = () => {
           </motion.div>
 
           {/* Right Column: Bio details */}
-          <div className="lg:col-span-7 flex flex-col text-center lg:text-left">
+          <div className="lg:col-span-7 flex flex-col text-left">
             
-            {/* Section subtitle */}
-            <div className="overflow-hidden mb-4">
-              <motion.span 
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal}
-                className="text-xs font-outfit font-black text-cyan-400 uppercase tracking-[0.3em] block"
-              >
-                Who I Am
-              </motion.span>
-            </div>
-
-            {/* Title */}
-            <div className="overflow-hidden mb-8">
-              <motion.h2 
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal} transition={{ ...transition, delay: 0.1 }}
-                className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]"
-              >
-                About Me<span className="text-gray-500">.</span>
-              </motion.h2>
-            </div>
-
             {/* Detailed description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
+              transition={{ duration: 1, delay: 0.1 }}
               className="space-y-6 text-gray-400 font-inter font-light text-base leading-relaxed max-w-2xl"
             >
               <p>
@@ -89,7 +89,7 @@ const About = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.5 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 pt-10 border-t border-white/10 text-left"
             >
               {stats.map((stat, i) => (

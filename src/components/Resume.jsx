@@ -48,15 +48,19 @@ const Resume = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-10">
           <div className="overflow-hidden">
-            <motion.h2 
+            <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal}
-              className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]"
             >
-              Resume<span className="text-gray-500">.</span>
-            </motion.h2>
+              <span className="text-xs font-outfit font-black text-cyan-400 uppercase tracking-[0.3em] block mb-4">
+                04 / Credentials
+              </span>
+              <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
+                Resume<span className="text-gray-500">.</span>
+              </h2>
+            </motion.div>
           </div>
-          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed">
-            A comprehensive look at my professional journey, academic qualifications, and technical backgrounds.
+          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed text-left">
+            A comprehensive look at my academic qualifications, professional path, and certifications.
           </p>
         </div>
 

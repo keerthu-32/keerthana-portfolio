@@ -58,43 +58,78 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-32 px-6 md:px-12 min-h-screen flex items-center">
-      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <div className="max-w-[1400px] mx-auto w-full">
         
-        {/* Left column titles */}
-        <div>
-          <div className="overflow-hidden mb-6">
-            <motion.h2 
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-10">
+          <div className="overflow-hidden">
+            <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal}
-              className="text-6xl md:text-8xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.85]"
             >
-              Let's
-            </motion.h2>
+              <span className="text-xs font-outfit font-black text-cyan-400 uppercase tracking-[0.3em] block mb-4">
+                05 / Connection
+              </span>
+              <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
+                Get In Touch<span className="text-gray-500">.</span>
+              </h2>
+            </motion.div>
           </div>
-          <div className="overflow-hidden mb-12">
-            <motion.h2 
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={textReveal} transition={{ ...transition, delay: 0.1 }}
-              className="text-6xl md:text-8xl font-outfit font-black tracking-tighter text-gray-500 uppercase leading-[0.85]"
-            >
-              Talk.
-            </motion.h2>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} viewport={{ once: true }}
-            className="flex flex-col gap-8 mt-20"
-          >
-            <div>
-              <p className="text-xs font-outfit font-black text-gray-600 uppercase tracking-widest mb-2">Email</p>
-              <a href="mailto:keerthanajothi943@gmail.com" className="text-lg md:text-xl font-inter font-light text-white hover:opacity-70 transition-opacity">
-                keerthanajothi943@gmail.com
-              </a>
-            </div>
-            <div>
-              <p className="text-xs font-outfit font-black text-gray-600 uppercase tracking-widest mb-2">Location</p>
-              <p className="text-lg md:text-xl font-inter font-light text-white">Chennai, Tamil Nadu, India</p>
-            </div>
-          </motion.div>
+          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed text-left">
+            Have a project in mind, want to discuss software engineering, or just say hello?
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          
+          {/* Left column info */}
+          <div className="flex flex-col justify-between py-2 text-left">
+            <div>
+              <h3 className="text-2xl font-outfit font-bold text-white mb-6 uppercase tracking-wider">
+                Start a Conversation
+              </h3>
+              <p className="text-gray-400 font-inter font-light text-sm leading-relaxed max-w-sm mb-12">
+                I'm always open to discussing new full-stack opportunities, developer tools, creative project ideas, or code structures. Drop me a line!
+              </p>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }} viewport={{ once: true }}
+              className="flex flex-col gap-8"
+            >
+              <div>
+                <p className="text-xs font-outfit font-black text-gray-600 uppercase tracking-widest mb-2">Email</p>
+                <a href="mailto:keerthanajothi943@gmail.com" className="text-lg md:text-xl font-inter font-light text-white hover:opacity-70 transition-opacity">
+                  keerthanajothi943@gmail.com
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-outfit font-black text-gray-600 uppercase tracking-widest mb-2">Location</p>
+                <p className="text-lg md:text-xl font-inter font-light text-white">Chennai, Tamil Nadu, India</p>
+              </div>
+              <div>
+                <p className="text-xs font-outfit font-black text-gray-600 uppercase tracking-widest mb-2">Socials</p>
+                <div className="flex gap-4 items-center">
+                  <a 
+                    href="https://www.linkedin.com/in/keerthana-s-b7a050258/" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="text-lg md:text-xl font-inter font-light text-white hover:text-cyan-400 hover:opacity-70 transition-all duration-300"
+                  >
+                    LinkedIn
+                  </a>
+                  <span className="text-gray-600">/</span>
+                  <a 
+                    href="https://github.com/keerthu-32" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="text-lg md:text-xl font-inter font-light text-white hover:text-cyan-400 hover:opacity-70 transition-all duration-300"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
         {/* Right column form */}
         <motion.div 
@@ -196,9 +231,9 @@ const Contact = () => {
             
           </form>
         </motion.div>
-
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
