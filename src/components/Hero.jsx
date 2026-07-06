@@ -1,7 +1,8 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import KEERTHANA_PIC from "../assets/KEERTHANA_PIC.jpeg";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code2, Sparkles, ArrowUpRight } from "lucide-react";
+import resumePdf from "../assets/keethana_resume.pdf";
 
 const transition = { duration: 1.4, ease: [0.16, 1, 0.3, 1] };
 
@@ -69,23 +70,40 @@ const Hero = () => {
               </motion.h1>
             </div>
 
-            {/* Divider, Bio paragraph, and Scroll Button */}
+            {/* Divider, Bio paragraph, Actions, and Scroll Button */}
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-8 border-t border-white/10 pt-10 mt-6">
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.8, duration: 1 }}
-                className="text-sm text-gray-400 font-inter font-light leading-relaxed max-w-xs text-center sm:text-left"
-              >
-                Hi, I'm <span className="text-white font-semibold">Keerthana</span>. A MERN stack architect crafting digital experiences that merge elegant design with robust engineering.
-              </motion.p>
+              <div className="flex flex-col gap-4 items-center sm:items-start">
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 0.8, duration: 1 }}
+                  className="text-sm text-gray-400 font-inter font-light leading-relaxed max-w-xs text-center sm:text-left"
+                >
+                  Hi, I'm <span className="text-white font-semibold">Keerthana</span>. A MERN stack architect crafting digital experiences that merge elegant design with robust engineering.
+                </motion.p>
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 1 }}
+                  className="flex justify-center sm:justify-start"
+                >
+                  <a 
+                    href={resumePdf}
+                    className="inline-flex items-center gap-2 text-xs font-outfit font-black text-white hover:text-cyan-400 uppercase tracking-widest transition-colors duration-300 group cursor-pointer"
+                  >
+                    View Resume
+                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  </a>
+                </motion.div>
+              </div>
               
               <motion.button 
                 initial={{ opacity: 0, scale: 0.8 }} 
                 animate={{ opacity: 1, scale: 1 }} 
                 transition={{ delay: 1, duration: 1, ease: "easeOut" }}
                 onClick={scrollToWork}
-                className="w-28 h-28 rounded-full border border-white/20 flex flex-col items-center justify-center text-[10px] font-outfit font-black uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-500 cursor-pointer"
+                className="w-28 h-28 rounded-full border border-white/20 flex flex-col items-center justify-center text-[10px] font-outfit font-black uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-500 cursor-pointer shrink-0"
               >
                 Scroll <br/> Down
               </motion.button>

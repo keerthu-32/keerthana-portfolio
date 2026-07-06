@@ -8,7 +8,7 @@ import {
   FaJs, 
   FaGitAlt 
 } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiTailwindcss, SiRedux } from "react-icons/si";
+import { SiMongodb, SiExpress, SiTailwindcss, SiRedux, SiTypescript } from "react-icons/si";
 
 const Skills = () => {
   const skills = [
@@ -16,6 +16,7 @@ const Skills = () => {
     { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
     { name: "Express", icon: <SiExpress />, color: "#FFFFFF" },
     { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+    { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
     { name: "Redux", icon: <SiRedux />, color: "#764ABC" },
     { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
     { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },

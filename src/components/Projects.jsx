@@ -11,29 +11,35 @@ const transition = { duration: 1.4, ease: [0.16, 1, 0.3, 1] };
 const Projects = () => {
   const projects = [
     {
-      name: "Smart Notes",
+      name: "Notes App",
       role: "Full Stack / MERN",
       description: "Cloud-sync note architecture with real-time tagging and markdown support. Built specifically for developer workflows.",
       link: "https://notesapp-w7lo.onrender.com/",
       github: "https://github.com/keerthu-32/notesapp",
+      githubBackend: "https://github.com/keerthu-32/notesapp-backend",
+      tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
       image: notesapp,
       year: "2024"
     },
     {
-      name: "Flux Expense",
+      name: "Expense Tracker",
       role: "Frontend / Data Viz",
       description: "Financial visualizer with intelligent categorization and monthly projection algorithms utilizing modern charting libraries.",
       link: "https://expensetracker-1a0p.onrender.com/",
       github: "https://github.com/keerthu-32/expensetracker",
+      githubBackend: "https://github.com/keerthu-32/expensetracker-backend",
+      tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "ChartJS", "CSS"],
       image: expense,
       year: "2023"
     },
     {
-      name: "SkyBound",
+      name: "Flight Booking App",
       role: "Backend / API Design",
       description: "High-performance flight aggregation engine with secure checkout, complex querying, and ticket management systems.",
       link: "https://booking-frontend-n6pv.onrender.com/",
       github: "https://github.com/keerthu-32/booking-frontend",
+      githubBackend: "https://github.com/keerthu-32/booking-backend",
+      tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Redux", "APIs"],
       image: flightbook,
       year: "2023"
     },
@@ -48,8 +54,8 @@ const Projects = () => {
           <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
             Selected<br/>Work
           </h2>
-          <p className="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 font-inter font-light leading-relaxed">
-            A curated selection of projects pushing the boundaries of web engineering, database design, and user experience.
+          <p className="text-gray-400 text-sm max-w-md mt-6 md:mt-0 font-inter font-light leading-relaxed">
+            A showcase of full-stack engineering, database scalability, and immersive frontend architectures. Each product represents a deep-dive into solving real-world developer problems through modular code, optimized data structures, and refined user flows.
           </p>
         </div>
 
@@ -74,11 +80,20 @@ const Projects = () => {
                   {project.name}
                 </h3>
                 
-                <p className="text-gray-400 font-inter font-light text-sm leading-relaxed mb-8 max-w-md">
+                <p className="text-gray-400 font-inter font-light text-sm leading-relaxed mb-6 max-w-md">
                   {project.description}
                 </p>
+
+                {/* Tech Stack Tags */}
+                <div className="flex flex-wrap gap-2 mb-8 max-w-md">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="text-[9px] font-mono font-bold text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full uppercase tracking-wider hover:bg-white/10 hover:text-white transition-colors duration-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 
-                <div className="flex items-center gap-6">
+                <div className="flex flex-wrap items-center gap-6">
                   <a 
                     href={project.link} target="_blank" rel="noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-widest hover:opacity-50 transition-opacity text-white"
@@ -90,8 +105,17 @@ const Projects = () => {
                     href={project.github} target="_blank" rel="noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-widest hover:opacity-50 transition-opacity text-gray-500 hover:text-white"
                   >
-                    GitHub Repo <Github size={16} />
+                    {project.githubBackend ? "Frontend Code" : "GitHub Repo"} <Github size={16} />
                   </a>
+
+                  {project.githubBackend && (
+                    <a 
+                      href={project.githubBackend} target="_blank" rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-widest hover:opacity-50 transition-opacity text-gray-500 hover:text-white"
+                    >
+                      Backend Code <Github size={16} />
+                    </a>
+                  )}
                 </div>
               </div>
 
