@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 
-import peerAppimg from "../assets/peerAppimg.png";
+import peerAppImg from "../assets/peerAppImg.png";
 import flightbook from "../assets/flightbook.png";
 import bulkMailerImg from "../assets/bulkMailerImg.png"
 
@@ -18,7 +18,7 @@ const Projects = () => {
       github: "https://github.com/ragavan2104/peer/tree/main/frontend",
       githubBackend: "https://github.com/ragavan2104/peer/tree/main/server",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
-      image: peerAppimg,
+      image: peerAppImg,
     },
     {
       name: "Bulk-Mail",
