@@ -2,33 +2,33 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 
-import expense from "../assets/expense.png";
-import notesapp from "../assets/notesapp.png";
+import peerAppimg from "../assets/peerAppimg.png";
 import flightbook from "../assets/flightbook.png";
+import bulkMailerImg from "../assets/bulkMailerImg.png"
 
 const transition = { duration: 1.4, ease: [0.16, 1, 0.3, 1] };
 
 const Projects = () => {
   const projects = [
     {
-      name: "Notes App",
+      name: "Peer App",
       role: "Full Stack / MERN",
-      description: "Cloud-sync note architecture with real-time tagging and markdown support. Built specifically for developer workflows.",
-      link: "https://notesapp-w7lo.onrender.com/",
-      github: "https://github.com/keerthu-32/notesapp",
-      githubBackend: "https://github.com/keerthu-32/notesapp-backend",
+      description: "A real time app where users can share their projects and links ",
+      link: "https://peer-kimv.vercel.app/",
+      github: "https://github.com/ragavan2104/peer/tree/main/frontend",
+      githubBackend: "https://github.com/ragavan2104/peer/tree/main/server",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
-      image: notesapp,
+      image: peerAppimg,
     },
     {
-      name: "Expense Tracker",
+      name: "Bulk-Mail",
       role: "Full Stack / MERN",
       description: "Full-stack financial tracker with secure database synchronization, intelligent expense categorization, and interactive predictive charting.",
-      link: "https://expensetracker-1a0p.onrender.com/",
-      github: "https://github.com/keerthu-32/expensetracker",
-      githubBackend: "https://github.com/keerthu-32/expensetracker-backend",
+      link: "https://mailsender-x8cv-6t269n12u-raagavans-projects.vercel.app/",
+      github: "https://github.com/ragavan2104/mailsender/tree/main/frontend",
+      githubBackend: "https://github.com/ragavan2104/mailsender/tree/main/backend",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "ChartJS", "CSS"],
-      image: expense,
+      image: bulkMailerImg,
     },
     {
       name: "Flight Booking App",
@@ -43,7 +43,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="work" className="py-32 px-6 md:px-12">
+    <section id="projects" className="py-32 px-6 md:px-12">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header */}
@@ -53,7 +53,7 @@ const Projects = () => {
               02 / Projects
             </span>
             <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter text-white uppercase leading-[0.9]">
-              Selected<br/>Work
+              Selected<br/>Projects
             </h2>
           </div>
           <p className="text-gray-400 text-sm max-w-md mt-6 md:mt-0 font-inter font-light leading-relaxed">

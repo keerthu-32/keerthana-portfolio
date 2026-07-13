@@ -17,8 +17,8 @@ const Hero = () => {
   const yParallax = useTransform(scrollY, [0, 1000], [0, 150]);
   const opacityFade = useTransform(scrollY, [0, 500], [1, 0]);
 
-  const scrollToWork = () => {
-    const el = document.getElementById('work');
+  const scrollToProjects = () => {
+    const el = document.getElementById('projects');
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -98,7 +98,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.8 }} 
               animate={{ opacity: 1, scale: 1 }} 
               transition={{ delay: 1, duration: 1, ease: "easeOut" }}
-              onClick={scrollToWork}
+              onClick={scrollToProjects}
               className="w-28 h-28 rounded-full border border-white/20 flex flex-col items-center justify-center text-[10px] font-outfit font-black uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-500 cursor-pointer shrink-0"
             >
               Scroll <br/> Down

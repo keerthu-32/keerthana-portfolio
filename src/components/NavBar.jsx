@@ -19,7 +19,7 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["Home", "About", "Work", "Expertise", "Resume", "Contact"];
+  const navItems = ["Home", "About", "Projects", "Expertise", "Resume", "Contact"];
 
   const scrollTo = (id) => {
     const el = document.getElementById(id.toLowerCase());
