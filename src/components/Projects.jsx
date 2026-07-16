@@ -24,7 +24,7 @@ const Projects = () => {
       name: "Bike Inventory Manager",
       role: "Full Stack / MERN",
       description: "Full-stack Bike Inventory Manager with realtime profit and all data",
-      link: "https://bikersin-d77w-git-main-raagavans-projects.vercel.app/",
+      link: "https://mybikers.ragav.dev",
       github: "https://github.com/ragavan2104/bikersin/tree/main/apps",
       githubBackend: "https://github.com/ragavan2104/bikersin/tree/main/server",
       tags: ["React (TSX)", "NodeJS", "Express", "MongoDB", "TypeScript", "ChartJS", "CSS"],
